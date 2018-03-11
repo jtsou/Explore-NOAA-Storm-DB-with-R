@@ -28,10 +28,9 @@ Storm = read.csv('Storm.csv.bz2',header = TRUE, sep = ",")
 
 #review storm data
 names(Storm)
-head(Storm, nrow=2)
 #subset data
 SubStorm = Storm[, c('EVTYPE','FATALITIES','INJURIES','PROPDMG','PROPDMGEXP','CROPDMG','CROPDMGEXP')]
-str(SubStorm)
+
 ```
 
 Next step is to convert the values under variables by mapping the values
@@ -48,6 +47,7 @@ SubStorm$Tot_PropDMG = as.numeric(tmpPROP)*SubStorm$PROPDMG
 SubStorm$Tot_CropDMG = as.numeric(tmpCROP)*SubStorm$CROPDMG
 
 ```
+
 # Results
 
 ##Across the United States, which types of events (as indicated in the EVTYPE variable) are most harmful with respect to population health ?
@@ -70,7 +70,7 @@ ggplot(event, aes(x=EVTYPE, y= FATALITIES)) +
   ggtitle('Events That Are Most Harmful with Respect to Population Health Across the US')
   
 ```
-
+![P1](p1.png) 
 
 Number of Injuries BY TOP 10 Wrather Events
 ```{r}
@@ -90,7 +90,7 @@ ggplot(Injuries, aes(x=EVTYPE, y= INJURIES)) +
   ggtitle('Injuries By Top 10 Weather Events Across the US')
 
 ```
-
+![P2](p2.png) 
 ## Across the United States, which types of events have the greatest economic consequences ?
 
 ```{r}
@@ -107,4 +107,4 @@ ggplot(DMG, aes(x = EVTYPE, y = TotalDamage/10^3)) +
     xlab("Event Type") + ylab("Damages (1k$)") + ggtitle("Property & Crop Damages(Total Damage) by top 10 Weather Events")
 
 ```
-
+![P3](p3.png) 
