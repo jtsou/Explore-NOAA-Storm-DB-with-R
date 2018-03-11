@@ -108,3 +108,6 @@ ggplot(DMG, aes(x = EVTYPE, y = TotalDamage/10^3)) +
 
 ```
 ![P3](p3.png) 
+
+
+Conclusion: It appears that Tornado causes not only the most damage to human health but the economics damages as well.
